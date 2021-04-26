@@ -50,6 +50,11 @@
 (put 'upcase-region 'disabled nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(defun disable-y-or-n-p (orig-fun &rest args)
+  (cl-letf (((symbol-function 'y-or-n-p) (lambda (prompt) t)))
+    (apply orig-fun args)))
+(advice-add 'ediff-quit :around #'disable-y-or-n-p)
+
 (defun my-scroll-down-command ()
   (interactive)
   (dotimes (i 3)
@@ -275,6 +280,19 @@
          ("<right>" . windmove-right)
          ("<up>" . windmove-up)
          ("<down>" . windmove-down)))
+
+(use-package ztree
+  :ensure t)
+
+(use-package ztree-dir
+  :bind (:map ztreedir-mode-map
+              ("f" . ztree-dir-narrow-to-dir)
+              ("b" . ztree-dir-widen-to-parent)))
+
+(use-package ztree-view
+  :bind (:map ztree-mode-map
+              ("n" . next-line)
+              ("p" . previous-line)))
 
 (defconst user-local-init-file (concat user-emacs-directory "local.el"))
 (if (file-readable-p user-local-init-file) (load-file user-local-init-file) nil)
