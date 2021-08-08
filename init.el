@@ -274,6 +274,9 @@
          ("C-r" . swiper))
   :ensure t)
 
+(use-package systemd
+  :ensure t)
+
 (use-package tooltip
   :init
   (progn
