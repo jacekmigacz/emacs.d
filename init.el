@@ -261,8 +261,9 @@
     (setq spacemacs-theme-org-height nil)
     (setq spacemacs-theme-underline-parens nil))
   :config
-  (when (display-graphic-p)
-    (load-theme 'spacemacs-light t))
+  (if (display-graphic-p)
+      (load-theme 'spacemacs-light t)
+    (load-theme 'wombat t))
   :ensure spacemacs-theme)
 
 (use-package swiper
