@@ -16,10 +16,10 @@
 (setq package-enable-at-startup nil)
 
 (unless (package-installed-p 'quelpa)
-    (with-temp-buffer
-      (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-      (eval-buffer)
-      (quelpa-self-upgrade)))
+  (with-temp-buffer
+    (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
 (setq quelpa-self-upgrade-p nil)
 (setq quelpa-update-melpa-p nil)
 
