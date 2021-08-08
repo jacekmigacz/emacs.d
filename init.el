@@ -266,6 +266,9 @@
     (load-theme 'wombat t))
   :ensure spacemacs-theme)
 
+(use-package ssh-config-mode
+  :ensure t)
+
 (use-package swiper
   :bind (("C-s" . swiper)
          ("C-r" . swiper))
