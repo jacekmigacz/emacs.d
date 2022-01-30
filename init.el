@@ -73,6 +73,14 @@
   (progn
     (global-auto-revert-mode t)))
 
+(use-package avy
+  :init
+  (progn
+    (global-set-key (kbd "M-g r") 'avy-goto-char)
+    (global-set-key (kbd "M-g w") 'avy-goto-word-1)
+    (global-set-key (kbd "M-g l") 'avy-goto-line))
+  :ensure t)
+
 (use-package cc-mode
   :init
   (progn
@@ -254,17 +262,6 @@
     (column-number-mode 1))
   :bind (("M-]" . next-error)
          ("M-[" . previous-error)))
-
-(use-package spacemacs-common
-  :init
-  (progn
-    (setq spacemacs-theme-org-height nil)
-    (setq spacemacs-theme-underline-parens nil))
-  :config
-  (if (display-graphic-p)
-      (load-theme 'spacemacs-light t)
-    (load-theme 'wombat t))
-  :ensure spacemacs-theme)
 
 (use-package ssh-config-mode
   :ensure t)
