@@ -259,9 +259,7 @@
   :init
   (progn
     (line-number-mode 1)
-    (column-number-mode 1))
-  :bind (("M-]" . next-error)
-         ("M-[" . previous-error)))
+    (column-number-mode 1)))
 
 (use-package ssh-config-mode
   :ensure t)
