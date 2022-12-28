@@ -139,7 +139,6 @@
     (setq helm-exit-idle-delay 0))
   :config
   (progn
-    (require 'helm-config)
     (helm-mode)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
