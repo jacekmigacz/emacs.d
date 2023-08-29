@@ -276,6 +276,9 @@
   (progn
     (tooltip-mode -1)))
 
+(use-package whitespace
+  :bind (("<f12>" . whitespace-mode)))
+
 (use-package windmove
   :bind (("<left>" . windmove-left)
          ("<right>" . windmove-right)
