@@ -268,13 +268,13 @@
          ("C-r" . swiper))
   :ensure t)
 
-(use-package systemd
-  :ensure t)
-
 (use-package tooltip
   :init
   (progn
     (tooltip-mode -1)))
+
+(use-package vertico
+  :ensure t)
 
 (use-package whitespace
   :bind (("<f12>" . whitespace-mode)))
@@ -284,6 +284,11 @@
          ("<right>" . windmove-right)
          ("<up>" . windmove-up)
          ("<down>" . windmove-down)))
+
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (load-theme 'zenburn t))
 
 (use-package ztree
   :ensure t)
