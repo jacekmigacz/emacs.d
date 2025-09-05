@@ -17,17 +17,16 @@
 
 (unless (package-installed-p 'quelpa)
   (with-temp-buffer
-    (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
     (eval-buffer)
     (quelpa-self-upgrade)))
-(setq quelpa-self-upgrade-p nil)
-(setq quelpa-update-melpa-p nil)
-
-(unless (or (package-installed-p 'use-package) (package-installed-p 'quelpa-use-package))
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (package-install 'use-package)
+(unless package-archive-contents
+  (package-refresh-contents))
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(unless (package-installed-p 'quelpa-use-package)
   (package-install 'quelpa-use-package))
+
 (require 'use-package)
 (require 'quelpa-use-package)
 
