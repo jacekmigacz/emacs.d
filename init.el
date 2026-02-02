@@ -1,3 +1,8 @@
+(setq warning-minimum-level :error)
+(setq native-comp-async-report-warnings-errors nil)
+(setq native-comp-verbose 0)
+(setq byte-compile-warnings nil)
+
 (if (fboundp 'menu-bar-mode)
     (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode)
@@ -162,7 +167,9 @@
                (define-key helm-gtags-mode-map (funcall key-func helm-gtags-prefix-key key) command)))    
     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-    (add-to-list 'safe-local-variable-values '(helm-gtags-mode . 1))))
+    (add-to-list 'safe-local-variable-values '(helm-gtags-mode . 1)))
+  :ensure t)
+
 (use-package hexl
   :init
   (progn
