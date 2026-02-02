@@ -14,21 +14,11 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 (setq package-enable-at-startup nil)
-
-(unless (package-installed-p 'quelpa)
-  (with-temp-buffer
-    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
-    (eval-buffer)
-    (quelpa-self-upgrade)))
 (unless package-archive-contents
   (package-refresh-contents))
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-(unless (package-installed-p 'quelpa-use-package)
-  (package-install 'quelpa-use-package))
-
 (require 'use-package)
-(require 'quelpa-use-package)
 
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
@@ -120,9 +110,6 @@
   (progn
     (blink-cursor-mode -1)))
 
-(use-package glsl-mode
-  :ensure t)
-
 (use-package gud
   :config
   (progn
@@ -175,9 +162,7 @@
                (define-key helm-gtags-mode-map (funcall key-func helm-gtags-prefix-key key) command)))    
     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-    (add-to-list 'safe-local-variable-values '(helm-gtags-mode . 1)))
-  :quelpa (helm-gtags :fetcher github :repo "jacekmigacz/emacs-helm-gtags"))
-
+    (add-to-list 'safe-local-variable-values '(helm-gtags-mode . 1))))
 (use-package hexl
   :init
   (progn
@@ -198,19 +183,10 @@
   (ivy-mode)
   :ensure t)
 
-(use-package magit
-  :bind (("C-c g" . magit-status))
-  :ensure t)
-
 (use-package man
   :init
   (progn
     (setq Man-notify-method 'pushy)))
-
-(use-package mouse
-  :init
-  (progn
-    (setq mouse-yank-at-point t)))
 
 (use-package mu4e
   :defer t
@@ -225,14 +201,6 @@
   :ensure nil)
 (defconst user-mu4e-contexts (concat user-emacs-directory "mu4e.el"))
 (if (file-readable-p user-mu4e-contexts) (load-file user-mu4e-contexts) nil)
-
-(use-package mwheel
-  :init
-  (progn
-    (setq mouse-wheel-scroll-amount '(1 ((shift))))))
-
-(use-package ninja-mode
-  :ensure t)
 
 (use-package paren
   :init
